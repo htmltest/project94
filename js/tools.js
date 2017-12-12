@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $('nav a').click(function(e) {
-        $.scrollTo($($(this).attr('href')), {duration : 500});
+        $.scrollTo($($(this).attr('href')), {duration : 500, offset: {top: -100}});
         e.preventDefault();
     });
 
@@ -9,7 +9,8 @@ $(document).ready(function() {
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
+        prevArrow: '<button type="button" class="slick-prev"></button>',
+        nextArrow: '<button type="button" class="slick-next"></button>',
         dots: true,
         autoplay: true,
         pauseOnHover: false,
@@ -17,7 +18,15 @@ $(document).ready(function() {
         pauseOnFocus: false,
         fade: true,
         speed: 1000,
-        autoplaySpeed: 5000
+        autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 767,
+                settings: {
+                    arrows: false
+                }
+            }
+        ]
     });
 
     $('.reviews-slider').slick({
@@ -159,4 +168,204 @@ $(document).ready(function() {
         }
     });
 
+    $(window).on('load resize scroll', function() {
+        if ($(window).scrollTop() > 0) {
+            $('header').addClass('fixed');
+        } else {
+            $('header').removeClass('fixed');
+        }
+    });
+
+    $('.header-nav-link').click(function(e) {
+        if ($('html').hasClass('mobile-menu-open')) {
+            $('html').removeClass('mobile-menu-open');
+        } else {
+            $('html').addClass('mobile-menu-open');
+        }
+        e.preventDefault();
+    });
+
+    $('.mobile-menu-scroll').click(function(e) {
+        $('html').removeClass('mobile-menu-open');
+        $.scrollTo($($(this).attr('href')), {duration : 500, offset: {top: -100}});
+        e.preventDefault();
+    });
+
+    $.validator.addMethod('maskPhone',
+        function(value, element) {
+            if (value == '') {
+                return true;
+            }
+            return /^\+7 \(\d{3}\) \d{3}\-\d{2}\-\d{2}$/.test(value);
+        },
+        'Не соответствует формату'
+    );
+
+    $('form').each(function() {
+        initForm($(this));
+    });
+
+    $('body').on('click', '.window-link', function(e) {
+        windowOpen($(this).attr('href'), null, orderSelects);
+        e.preventDefault();
+    });
+
+    $('body').on('keyup', function(e) {
+        if (e.keyCode == 27) {
+            windowClose();
+        }
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).hasClass('window')) {
+            windowClose();
+        }
+    });
+
 });
+
+$(window).on('resize', function() {
+    $('.form-select select').chosen('destroy');
+    $('.form-select select').chosen({disable_search: true, placeholder_text_multiple: ' ', no_results_text: 'Нет результатов'});
+});
+
+function initForm(curForm) {
+    curForm.find('input.maskPhone').mask('+7 (999) 999-99-99');
+
+    var dateFormat = 'dd.mm.yy';
+    curForm.find('.form-input-date input').datepicker({
+        dateFormat: dateFormat,
+        minDate: 0
+    });
+
+    $('.window #programmSelect').change(function() {
+        var curValue = $(this).val();
+        var daysHTML = '<option value=""></option>';
+        for (var i = 0; i < programms.length; i++) {
+            var curEl = programms[i];
+            if (curValue == curEl.value) {
+                var daysList = curEl.list;
+                for (var j = 0; j < daysList.length; j++) {
+                    var curSubEl = daysList[j];
+                    daysHTML += '<option value="' + curSubEl.value + '">' + curSubEl.title + '</option>';
+                }
+            }
+        }
+        $('.window #daysSelect').html(daysHTML);
+        $('.window #daysSelect').trigger('chosen:updated');
+    });
+
+    curForm.find('.form-select select').chosen({disable_search: true, no_results_text: 'Нет результатов'});
+
+    if (curForm.hasClass('window-form')) {
+        curForm.validate({
+            ignore: '',
+            submitHandler: function(form) {
+                $(form).find('.form-loading').css({'display': 'block'});
+                windowOpen($(form).attr('action'), $(form).serialize(), orderSelects);
+            }
+        });
+    } else {
+        if (!curForm.hasClass('novalidate')) {
+            curForm.validate({
+                ignore: ''
+            });
+        }
+    }
+}
+
+function orderSelects() {
+    if (typeof (programms) != 'undefined') {
+        var programmHTML = '<option value=""></option>';
+        for (var i = 0; i < programms.length; i++) {
+            var curEl = programms[i];
+            programmHTML += '<option value="' + curEl.value + '">' + curEl.title + '</option>';
+        }
+        $('.window #programmSelect').html(programmHTML);
+    }
+}
+
+function windowOpen(linkWindow, dataWindow, callbackWindow) {
+    if (!$('html').hasClass('window-open')) {
+        var curScroll = $(window).scrollTop();
+        $('.wrapper').data('curScroll', curScroll);
+        $('.wrapper-inner').css({'top': -curScroll});
+    }
+
+    $('html').addClass('window-open');
+
+    if ($('.window').length == 0) {
+        $('body').append('<div class="window"><div class="window-loading"></div></div>')
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: linkWindow,
+        dataType: 'html',
+        data: dataWindow,
+        cache: false
+    }).done(function(html) {
+        if ($('.window').length > 0) {
+            $('.window').remove();
+        }
+        $('body').append('<div class="window"><div class="window-loading"></div></div>')
+
+        $('.window').append('<div class="window-container window-container-load"><div class="window-content">' + html + '<a href="#" class="window-close"></a></div></div>')
+
+        if ($('.window-container img').length > 0) {
+            $('.window-container img').each(function() {
+                $(this).attr('src', $(this).attr('src'));
+            });
+            $('.window-container').data('curImg', 0);
+            $('.window-container img').one('load', function() {
+                var curImg = $('.window-container').data('curImg');
+                curImg++;
+                $('.window-container').data('curImg', curImg);
+                if ($('.window-container img').length == curImg) {
+                    $('.window-container').removeClass('window-container-load');
+                    windowPosition();
+                }
+            });
+        } else {
+            $('.window-container').removeClass('window-container-load');
+            windowPosition();
+        }
+
+        if (typeof (callbackWindow) != 'undefined') {
+            callbackWindow.call();
+        }
+
+        $(window).resize(function() {
+            windowPosition();
+        });
+
+        $('.window-close').click(function(e) {
+            windowClose();
+            e.preventDefault();
+        });
+
+        $('.window form').each(function() {
+            initForm($(this));
+        });
+    });
+}
+
+function windowPosition() {
+    if ($('.window').length > 0) {
+        $('.window-container').css({'left': '50%', 'margin-left': -$('.window-container').width() / 2});
+
+        $('.window-container').css({'top': '50%', 'margin-top': -$('.window-container').height() / 2, 'padding-bottom': 0});
+        if ($('.window-container').height() > $('.window').height() - 60) {
+            $('.window-container').css({'top': '30px', 'margin-top': 0, 'padding-bottom': 30});
+        }
+    }
+}
+
+function windowClose() {
+    if ($('.window').length > 0) {
+        $('.window').remove();
+        $('html').removeClass('window-open');
+        $(window).scrollTop($('.wrapper').data('curScroll'));
+        $('.wrapper-inner').css({'top': 'auto'});
+    }
+}

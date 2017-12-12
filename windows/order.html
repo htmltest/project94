@@ -1,0 +1,138 @@
+<script>
+    var programms = [
+                         {
+                            value   : '1',
+                            title   : 'офис',
+                            list    : [
+                                        {
+                                            value   : '1',
+                                            title   : '1 день: 1 200 руб.',
+                                        },
+                                        {
+                                            value   : '2',
+                                            title   : '5 дней: 6 000 руб.',
+                                        },
+                                        {
+                                            value   : '3',
+                                            title   : '7 дней: 8 000 руб.',
+                                        },
+                                        {
+                                            value   : '4',
+                                            title   : '30 дней: 32 400 руб.',
+                                        },
+                                    ]
+                        },
+
+                        {
+                            value   : '2',
+                            title   : 'снижение веса',
+                            list    : [
+                                        {
+                                            value   : '1',
+                                            title   : '1 день: 500 руб.',
+                                        },
+                                        {
+                                            value   : '2',
+                                            title   : '5 дней: 3 000 руб.',
+                                        },
+                                        {
+                                            value   : '3',
+                                            title   : '7 дней: 4 000 руб.',
+                                        },
+                                        {
+                                            value   : '4',
+                                            title   : '30 дней: 16 200 руб.',
+                                        },
+                                    ]
+                        },
+
+                        {
+                            value   : '3',
+                            title   : 'баланс',
+                            list    : [
+                                        {
+                                            value   : '1',
+                                            title   : '1 день: 1 000 руб.',
+                                        },
+                                        {
+                                            value   : '2',
+                                            title   : '5 дней: 5 000 руб.',
+                                        },
+                                        {
+                                            value   : '3',
+                                            title   : '7 дней: 6 000 руб.',
+                                        },
+                                        {
+                                            value   : '4',
+                                            title   : '30 дней: 25 000 руб.',
+                                        },
+                                    ]
+                        },
+
+                        {
+                            value   : '4',
+                            title   : 'сила',
+                            list    : [
+                                        {
+                                            value   : '1',
+                                            title   : '1 день: 2 000 руб.',
+                                        },
+                                        {
+                                            value   : '2',
+                                            title   : '5 дней: 10 000 руб.',
+                                        },
+                                        {
+                                            value   : '3',
+                                            title   : '7 дней: 35 000 руб.',
+                                        },
+                                        {
+                                            value   : '4',
+                                            title   : '30 дней: 70 000 руб.',
+                                        },
+                                    ]
+                        },
+                    ];
+</script>
+<div class="window-order">
+    <div class="window-order-title">Оформление заказа</div>
+    <form action="windows/success.html" method="post" class="window-form">
+        <div class="cols">
+            <div class="col-half">
+                <div class="form-label">Ваша программа</div>
+                <div class="form-select">
+                    <select name="programm" data-placeholder=" " id="programmSelect">
+                    </select>
+                </div>
+            </div>
+            <div class="col-half">
+                <div class="form-label">Сколько дней вы хотите питаться</div>
+                <div class="form-select">
+                    <select name="days" data-placeholder=" " id="daysSelect">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="cols">
+            <div class="col-half">
+                <div class="form-label">Ваше имя</div>
+                <div class="form-input"><input type="text" name="name" value="" class="required" /></div>
+            </div>
+            <div class="col-half">
+                <div class="form-label">С какого дня начать </div>
+                <div class="form-input form-input-date"><input type="text" name="date" value="" /></div>
+            </div>
+        </div>
+        <div class="cols">
+            <div class="col-half">
+                <div class="form-label">Ваш телефон</div>
+                <div class="form-input"><input type="text" name="phone" value="" class="required maskPhone" /></div>
+            </div>
+            <div class="col-half">
+                <div class="form-label">Куда доставить заказ</div>
+                <div class="form-input"><input type="text" name="address" value="" /></div>
+            </div>
+        </div>
+        <div class="form-submit"><input type="submit" value="оформить заказ" /></div>
+        <div class="form-notice">Нажимая кнопку «Оформить заказ», вы даете согласие на обработку ваших персональных данных компанией MYFooFit. C политикой конфиденциальности можно ознакомиться <a href="#">здесь</a>.</div>
+    </form>
+</div>
