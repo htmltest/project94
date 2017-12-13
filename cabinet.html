@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <title>MY FOOD FIT</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,700&amp;subset=cyrillic" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="js/slick/slick.css" />
+        <link rel="stylesheet" href="js/chosen/chosen.css" />
+        <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css" />
+
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/slick/slick.min.js"></script>
+        <script src="js/jquery.scrollTo.min.js"></script>
+        <script src="js/jquery.maskedinput.js"></script>
+        <script src="js/validation/jquery.validate.min.js"></script>
+        <script src="js/validation/messages_ru.js"></script>
+        <script src="js/chosen/chosen.jquery.min.js"></script>
+        <script src="js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="js/jquery-ui-1.12.1.custom/datepicker-ru.js"></script>
+        <script src="js/jquery.scrollTo.min.js"></script>
+        <script src="js/tools.js"></script>
+
+        <meta name="viewport" content="width=device-width" />
+    </head>
+
+    <body>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+
+            <!-- cabinet -->
+            <div class="cabinet">
+                <div class="cabinet-back-link"><a href="#">вернуться на главную</a></div>
+                <div class="cabinet-header">
+                    <div class="cabinet-header-title">Личный кабинет</div>
+                    <div class="cabinet-header-links">
+                        <a href="windows/support.html" class="support-link window-link">написать в тех.поддержку</a>
+                        <a href="#" class="logout-link">выход</a>
+                    </div>
+                </div>
+
+                <!-- cabinet profile -->
+                <div class="cabinet-profile">
+                    <div class="cabinet-profile-inner">
+                        <div class="cabinet-profile-item">
+                            <div class="cabinet-profile-item-title">Ваше имя:</div>
+                            <div class="cabinet-profile-item-value">Константин <a href="#" class="cabinet-profile-item-edit"></a></div>
+
+                        </div>
+                        <div class="cabinet-profile-item">
+                            <div class="cabinet-profile-item-title">Ваш телефон:</div>
+                            <div class="cabinet-profile-item-value">+7 (916) 222-45-43 <a href="#" class="cabinet-profile-item-edit"></a></div>
+
+                        </div>
+                        <div class="cabinet-profile-item">
+                            <div class="cabinet-profile-item-title">Ваш e-mail:</div>
+                            <div class="cabinet-profile-item-value">konstantinopolskyi@myfoodfit.ru <a href="#" class="cabinet-profile-item-edit"></a></div>
+
+                        </div>
+                        <div class="cabinet-profile-item">
+                            <div class="cabinet-profile-item-title">Адрес доставки:</div>
+                            <div class="cabinet-profile-item-value">г. москва, ул. генерала белобородова, д.178 кв.145 <a href="#" class="cabinet-profile-item-edit"></a></div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- cabinet profile END -->
+
+                <!-- cabinet block -->
+                <div class="cabinet-block">
+                    <div class="cabinet-block-header">Накопленные баллы (всего: <strong>800</strong>) <a href="#">потратить баллы</a></div>
+                    <div class="cabinet-block-cols">
+                        <div class="cabinet-block-col cabinet-block-col-1">Дата</div>
+                        <div class="cabinet-block-col cabinet-block-col-2">Кол-во</div>
+                        <div class="cabinet-block-col cabinet-block-col-3">Примечание</div>
+                    </div>
+                    <div class="cabinet-block-rows">
+                        <div class="cabinet-block-row">
+                            <div class="cabinet-block-row-item cabinet-block-row-item-1"><span class="cabinet-block-row-item-title-mobile">Дата:</span> 12.12.2017</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-2 inc"><span class="cabinet-block-row-item-title-mobile">Кол-во:</span> +250</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-3"><span class="cabinet-block-row-item-title-mobile">Примечание:</span> Начисление баллов за заказ №3288</div>
+                        </div>
+                        <div class="cabinet-block-row">
+                            <div class="cabinet-block-row-item cabinet-block-row-item-1"><span class="cabinet-block-row-item-title-mobile">Дата:</span> 12.12.2017</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-2 dec"><span class="cabinet-block-row-item-title-mobile">Кол-во:</span> -100</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-3"><span class="cabinet-block-row-item-title-mobile">Примечание:</span> Списание баллов в оплату заказа №1122</div>
+                        </div>
+                        <div class="cabinet-block-row">
+                            <div class="cabinet-block-row-item cabinet-block-row-item-1"><span class="cabinet-block-row-item-title-mobile">Дата:</span> 12.12.2017</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-2 inc"><span class="cabinet-block-row-item-title-mobile">Кол-во:</span> +250</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-3"><span class="cabinet-block-row-item-title-mobile">Примечание:</span> Начисление баллов за заказ №3344</div>
+                        </div>
+                    </div>
+                    <div class="cabinet-block-ctrl">
+                        <a href="#" class="cabinet-block-hide">Показать меньше данных <span class="arrow">&uarr;</span></a>
+                        <a href="#" class="cabinet-block-more">Показать больше данных <span class="arrow">&darr;</span></a>
+                    </div>
+                </div>
+                <!-- cabinet block END -->
+
+                <!-- cabinet block -->
+                <div class="cabinet-block">
+                    <div class="cabinet-block-header">История заказов</div>
+                    <div class="cabinet-block-cols">
+                        <div class="cabinet-block-col cabinet-block-col-4">№</div>
+                        <div class="cabinet-block-col cabinet-block-col-5">Программа</div>
+                        <div class="cabinet-block-col cabinet-block-col-6">Кол-во дней</div>
+                        <div class="cabinet-block-col cabinet-block-col-7">Дата</div>
+                        <div class="cabinet-block-col cabinet-block-col-8">Статус</div>
+                    </div>
+                    <div class="cabinet-block-rows">
+                        <div class="cabinet-block-row">
+                            <div class="cabinet-block-row-item cabinet-block-row-item-4"><span class="cabinet-block-row-item-title-mobile">№:</span> 3288</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-5"><span class="cabinet-block-row-item-title-mobile">Программа:</span> Офис</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-6"><span class="cabinet-block-row-item-title-mobile">Кол-во дней:</span> 15</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-7"><span class="cabinet-block-row-item-title-mobile">Дата:</span> 04.09.2017</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-8 status-1"><span class="cabinet-block-row-item-title-mobile">Статус:</span> Получено</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-9"><a href="#">повторить</a></div>
+                        </div>
+                        <div class="cabinet-block-row">
+                            <div class="cabinet-block-row-item cabinet-block-row-item-4"><span class="cabinet-block-row-item-title-mobile">№:</span> 6677</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-5"><span class="cabinet-block-row-item-title-mobile">Программа:</span> Снижение веса</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-6"><span class="cabinet-block-row-item-title-mobile">Кол-во дней:</span> 7</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-7"><span class="cabinet-block-row-item-title-mobile">Дата:</span> 11.08.2017</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-8 status-2"><span class="cabinet-block-row-item-title-mobile">Статус:</span> В пути</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-9"><a href="#">повторить</a></div>
+                        </div>
+                        <div class="cabinet-block-row">
+                            <div class="cabinet-block-row-item cabinet-block-row-item-4"><span class="cabinet-block-row-item-title-mobile">№:</span> 3321</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-5"><span class="cabinet-block-row-item-title-mobile">Программа:</span> Баланс</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-6"><span class="cabinet-block-row-item-title-mobile">Кол-во дней:</span> 21</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-7"><span class="cabinet-block-row-item-title-mobile">Дата:</span> 21.07.2017</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-8 status-3"><span class="cabinet-block-row-item-title-mobile">Статус:</span> Отказ</div>
+                            <div class="cabinet-block-row-item cabinet-block-row-item-9"><a href="#">повторить</a></div>
+                        </div>
+                    </div>
+                    <div class="cabinet-block-ctrl">
+                        <a href="#" class="cabinet-block-hide">Показать меньше данных <span class="arrow">&uarr;</span></a>
+                        <a href="#" class="cabinet-block-more">Показать больше данных <span class="arrow">&darr;</span></a>
+                    </div>
+                </div>
+                <!-- cabinet block END -->
+
+            </div>
+            <!-- cabinet END -->
+
+        </div>
+        <!-- wrapper END -->
+
+    </body>
+</html>

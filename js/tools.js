@@ -222,6 +222,16 @@ $(document).ready(function() {
         }
     });
 
+    $('.cabinet-block-more').click(function(e) {
+        $(this).parents().filter('.cabinet-block').addClass('open');
+        e.preventDefault();
+    });
+
+    $('.cabinet-block-hide').click(function(e) {
+        $(this).parents().filter('.cabinet-block').removeClass('open');
+        e.preventDefault();
+    });
+
 });
 
 $(window).on('resize', function() {
