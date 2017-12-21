@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <title>MY FOOD FIT</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,700&amp;subset=cyrillic" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="js/slick/slick.css" />
+        <link rel="stylesheet" href="js/chosen/chosen.css" />
+        <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css" />
+
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/slick/slick.min.js"></script>
+        <script src="js/jquery.scrollTo.min.js"></script>
+        <script src="js/jquery.maskedinput.js"></script>
+        <script src="js/validation/jquery.validate.min.js"></script>
+        <script src="js/validation/messages_ru.js"></script>
+        <script src="js/chosen/chosen.jquery.min.js"></script>
+        <script src="js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="js/jquery-ui-1.12.1.custom/datepicker-ru.js"></script>
+        <script src="js/jquery.scrollTo.min.js"></script>
+        <script src="js/tools.js"></script>
+
+        <meta name="viewport" content="width=device-width" />
+    </head>
+
+    <body>
+
+        <!-- wrapper -->
+        <div class="wrapper wrapper-inner">
+
+            <header>
+                <div class="container">
+                    <div class="logo">
+                        <img src="images/logo.svg" alt="" />
+                    </div>
+                    <a href="#" class="header-nav-link"></a>
+                    <div class="mobile-menu">
+                        <div class="mobile-menu-inner">
+                            <ul>
+                                <li><a href="index.html#menu" class="mobile-menu-scroll">Меню</a></li>
+                                <li><a href="index.html#reviews" class="mobile-menu-scroll">Отзывы</a></li>
+                                <li><a href="windows/login.html" class="window-link">личный кабинет</a></li>
+                                <li><a href="windows/order.html" class="window-link">корзина</a></li>
+                            </ul>
+                        </div>
+                        <div class="mobile-menu-phone"><a href="tel:+79164064444">+7 916 406-44-44</a></div>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="index.html#menu">Меню</a></li>
+                            <li><a href="index.html#reviews">Отзывы</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header-phone">
+                        <div class="header-phone-title">Звоните</div>
+                        <div class="header-phone-link"><a href="tel:+79164064444">+7 916 406-44-44</a></div>
+                    </div>
+
+                    <div class="header-ctrl">
+                        <a href="windows/login.html" class="header-user window-link"></a>
+                        <a href="windows/order.html" class="header-cart window-link"><span class="header-cart-count">5</span></a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- container -->
+            <div class="container">
+                <div class="success">
+                    <div class="success-title">Ваш заказ №484 от 11.12.2017, 12:48:40, успешно создан</div>
+                    <div class="success-text">Номер вашей оплаты: №484/1 Вы можете следить за выполнением своего заказа в&nbsp;Персональном разделе сайта. Обратите внимание, что для входа в этот раздел вам необходимо будет ввести логин и пароль пользователя сайта</div>
+                </div>
+                <div class="payment">
+                    <div class="payment-title">Оплата заказа</div>
+                    <div class="payments">
+                        <div class="payments-item">
+                            <div class="payments-item-preview"><img src="images/payment-card.png" alt="" /></div>
+                            <div class="payments-item-title">Банковская карта</div>
+                        </div>
+                    </div>
+                    <a href="#" class="payments-start">Оплатить заказ</a>
+                    <div class="payments-error">User has cancelled</div>
+                </div>
+            </div>
+            <!-- container END -->
+
+            <footer>
+                <div class="container">
+                    <div class="footer-logo">
+                        <img src="images/footer-logo.svg" alt="" />
+                    </div>
+                    <div class="footer-contacts">
+                        <div class="footer-contacts-title">Звоните</div>
+                        <div class="footer-contacts-link"><a href="tel:+79164064444">+7 916 406-44-44</a></div>
+                    </div>
+                    <div class="footer-contacts">
+                        <div class="footer-contacts-title">Пишите</div>
+                        <div class="footer-contacts-link"><a href="mailto:myfoodfit@ya.ru">myfoodfit@ya.ru</a></div>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" target="_blank" class="footer-social-vk">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27px" height="15px"><path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M13.929,0.009 C12.545,0.015 11.663,0.017 10.419,0.017 C9.379,0.017 8.795,0.448 8.776,0.705 C8.759,0.940 9.290,1.129 9.613,1.320 C9.924,1.517 10.206,2.144 10.206,2.568 L10.206,6.264 C10.206,6.614 10.128,6.859 9.850,7.088 C9.718,7.197 9.561,7.226 9.391,7.225 C9.254,7.224 9.067,7.198 8.938,7.028 C7.568,5.213 7.564,4.990 5.644,1.334 C5.551,1.157 5.459,0.969 5.268,0.828 C5.077,0.686 4.795,0.593 4.342,0.593 C2.799,0.593 1.846,0.616 0.832,0.616 C-0.129,0.616 -0.036,1.218 0.092,1.492 C1.244,3.947 2.413,6.291 3.757,8.671 C5.330,11.457 6.769,13.131 9.190,14.334 C9.752,14.613 10.765,14.900 11.937,14.900 L14.425,14.900 C14.745,14.900 15.276,14.642 15.276,14.296 L15.276,12.387 C15.276,11.841 15.808,11.643 16.099,11.508 C16.441,11.350 16.800,11.600 16.980,11.797 C18.371,13.318 18.213,13.152 19.481,14.514 C19.767,14.822 19.983,14.983 20.525,14.983 C24.181,14.983 24.184,14.991 25.057,14.983 C25.296,14.982 25.652,14.613 25.731,14.470 C25.835,14.281 26.071,13.606 25.692,13.168 C24.407,11.682 23.098,10.322 21.843,8.972 C21.747,8.869 21.675,8.730 21.673,8.588 C21.670,8.432 21.754,8.282 21.843,8.156 C23.251,6.158 24.413,4.466 25.678,2.364 C26.089,1.681 26.036,1.197 25.961,1.031 C25.873,0.838 25.603,0.572 25.294,0.570 C23.605,0.560 22.875,0.536 21.073,0.538 C20.535,0.539 20.059,0.497 19.763,1.160 C18.971,2.935 17.679,5.644 16.558,6.770 C16.351,6.978 16.074,7.132 15.833,7.134 C15.591,7.135 15.334,6.967 15.298,6.565 C15.271,4.632 15.294,2.984 15.284,1.091 C15.281,0.512 15.042,0.364 14.862,0.236 C14.616,0.061 14.228,0.008 13.929,0.009 L13.929,0.009 Z"/></svg>
+                        </a>
+                        <a href="#" target="_blank" class="footer-social-fb">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="11px" height="23px"><path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M10.801,7.940 L7.384,7.940 L7.384,5.634 C7.384,4.768 7.941,4.566 8.334,4.566 C8.726,4.566 10.746,4.566 10.746,4.566 L10.746,0.758 L7.425,0.745 C3.737,0.745 2.898,3.584 2.898,5.402 L2.898,7.940 L0.765,7.940 L0.765,11.864 L2.898,11.864 C2.898,16.899 2.898,22.967 2.898,22.967 L7.384,22.967 C7.384,22.967 7.384,16.840 7.384,11.864 L10.410,11.864 L10.801,7.940 Z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <!-- wrapper END -->
+
+    </body>
+</html>

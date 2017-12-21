@@ -98,6 +98,26 @@
     <form action="windows/success.html" method="post" class="window-form">
         <div class="cols">
             <div class="col-half">
+                <div class="form-label">Ваше имя</div>
+                <div class="form-input"><input type="text" name="name" value="" class="required" /></div>
+            </div>
+            <div class="col-half">
+                <div class="form-label">Ваш телефон</div>
+                <div class="form-input"><input type="text" name="phone" value="" class="required maskPhone" /></div>
+            </div>
+        </div>
+        <div class="cols">
+            <div class="col-half">
+                <div class="form-label">Ваш e-mail</div>
+                <div class="form-input"><input type="text" name="email" value="" class="required email" /></div>
+            </div>
+            <div class="col-half">
+                <div class="form-auth-title">Вы уже зарегистрированы?</div>
+                <div class="form-auth-link"><a href="windows/login.html" class="window-link">Авторизоваться</a></div>
+            </div>
+        </div>
+        <div class="cols">
+            <div class="col-half">
                 <div class="form-label">Ваша программа</div>
                 <div class="form-select">
                     <select name="programm" data-placeholder=" " id="programmSelect">
@@ -114,25 +134,32 @@
         </div>
         <div class="cols">
             <div class="col-half">
-                <div class="form-label">Ваше имя</div>
-                <div class="form-input"><input type="text" name="name" value="" class="required" /></div>
-            </div>
-            <div class="col-half">
                 <div class="form-label">С какого дня начать </div>
                 <div class="form-input form-input-date"><input type="text" name="date" value="" /></div>
             </div>
-        </div>
-        <div class="cols">
             <div class="col-half">
-                <div class="form-label">Ваш телефон</div>
-                <div class="form-input"><input type="text" name="phone" value="" class="required maskPhone" /></div>
-            </div>
-            <div class="col-half">
-                <div class="form-label">Куда доставить заказ</div>
-                <div class="form-input"><input type="text" name="address" value="" /></div>
+                <div class="form-label">Способ оплаты</div>
+                <div class="form-radios">
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="payment" value="1" checked="checked" />
+                            <div class="form-radio-text">Наличными курьеру</div>
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="payment" value="2" />
+                            <div class="form-radio-text">Банковской картой</div>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="form-label">Куда доставить заказ</div>
+        <div class="form-input"><textarea name="address" rows="3" cols="10"></textarea></div>
+
         <div class="form-submit"><input type="submit" value="оформить заказ" /></div>
+
         <div class="form-notice">Нажимая кнопку «Оформить заказ», вы даете согласие на обработку ваших персональных данных компанией MYFooFit. C политикой конфиденциальности можно ознакомиться <a href="#">здесь</a>.</div>
         <div class="form-error">Произошла ошибка</div>
     </form>

@@ -1,8 +1,12 @@
+var orderForm;
+
 $(document).ready(function() {
 
     $('nav a').click(function(e) {
-        $.scrollTo($($(this).attr('href')), {duration : 500, offset: {top: -100}});
-        e.preventDefault();
+        if ($($(this).attr('href')).length > 0) {
+            $.scrollTo($($(this).attr('href')), {duration : 500, offset: {top: -100}});
+            e.preventDefault();
+        }
     });
 
     $('.slider-list').slick({
@@ -186,9 +190,11 @@ $(document).ready(function() {
     });
 
     $('.mobile-menu-scroll').click(function(e) {
-        $('html').removeClass('mobile-menu-open');
-        $.scrollTo($($(this).attr('href')), {duration : 500, offset: {top: -100}});
-        e.preventDefault();
+        if ($($(this).attr('href')).length > 0) {
+            $('html').removeClass('mobile-menu-open');
+            $.scrollTo($($(this).attr('href')), {duration : 500, offset: {top: -100}});
+            e.preventDefault();
+        }
     });
 
     $.validator.addMethod('maskPhone',
@@ -206,6 +212,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.window-link', function(e) {
+        orderForm = null;
         windowOpen($(this).attr('href'), null, orderSelects);
         e.preventDefault();
     });
@@ -231,6 +238,10 @@ $(document).ready(function() {
         $(this).parents().filter('.cabinet-block').removeClass('open');
         e.preventDefault();
     });
+
+    if (window.location.hash != '') {
+        $('a[href="' + window.location.hash + '"]').click();
+    }
 
 });
 
@@ -271,7 +282,7 @@ function initForm(curForm) {
         curForm.validate({
             ignore: '',
             submitHandler: function(form) {
-                $(form).find('.form-loading').css({'display': 'block'});
+                orderForm = $(form);
                 windowOpen($(form).attr('action'), $(form).serialize(), orderSelects);
             }
         });
@@ -285,11 +296,33 @@ function initForm(curForm) {
 }
 
 function orderSelects() {
+    var curProgramm = null;
+    var curDays = null;
+    if (orderForm != null) {
+        curProgramm = orderForm.find('input[name="programm"]').val();
+        curDays = orderForm.find('input[name="days"]:checked').val();
+    }
     if (typeof (programms) != 'undefined') {
         var programmHTML = '<option value=""></option>';
         for (var i = 0; i < programms.length; i++) {
             var curEl = programms[i];
-            programmHTML += '<option value="' + curEl.value + '">' + curEl.title + '</option>';
+            var programmSelected = '';
+            if (curProgramm == curEl.value) {
+                programmSelected = ' selected="selected"';
+
+                var daysHTML = '<option value=""></option>';
+                var daysList = curEl.list;
+                for (var j = 0; j < daysList.length; j++) {
+                    var curSubEl = daysList[j];
+                    var daysSelected = '';
+                    if (curDays == curSubEl.value) {
+                        daysSelected = ' selected="selected"';
+                    }
+                    daysHTML += '<option value="' + curSubEl.value + '"' + daysSelected + '>' + curSubEl.title + '</option>';
+                }
+                $('.window #daysSelect').html(daysHTML);
+            }
+            programmHTML += '<option value="' + curEl.value + '"' + programmSelected + '>' + curEl.title + '</option>';
         }
         $('.window #programmSelect').html(programmHTML);
     }
