@@ -1,4 +1,5 @@
 var orderForm;
+var orderProgramm;
 
 $(document).ready(function() {
 
@@ -70,8 +71,8 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.menu-type a').click(function(e) {
-        var curItem = $(this).parent();
+    $('.menu-type-block').click(function(e) {
+        var curItem = $(this).parents().filter('.menu-type');
         if (!curItem.hasClass('active')) {
             $('.menu-type.active').removeClass('active');
             curItem.addClass('active');
@@ -213,6 +214,9 @@ $(document).ready(function() {
 
     $('body').on('click', '.window-link', function(e) {
         orderForm = null;
+        if (typeof ($(this).data('programm')) != 'undefined') {
+            orderProgramm = $(this).data('programm');
+        }
         windowOpen($(this).attr('href'), null, orderSelects);
         e.preventDefault();
     });
@@ -220,6 +224,7 @@ $(document).ready(function() {
     $('body').on('keyup', function(e) {
         if (e.keyCode == 27) {
             windowClose();
+            $('.cabinet-profile-item-value.open').removeClass('open');
         }
     });
 
@@ -229,19 +234,57 @@ $(document).ready(function() {
         }
     });
 
+    $('.cabinet-block').each(function() {
+        var curBlock = $(this);
+        if (curBlock.find('.cabinet-block-row:hidden').length > 0) {
+            curBlock.find('.cabinet-block-ctrl').show();
+        }
+    });
+
     $('.cabinet-block-more').click(function(e) {
-        $(this).parents().filter('.cabinet-block').addClass('open');
+        var curBlock = $(this).parents().filter('.cabinet-block');
+        var count = curBlock.find('.cabinet-block-row:visible').length;
+        count += 3;
+        curBlock.find('.cabinet-block-row:lt(' + count + ')').show();
+        curBlock.addClass('open');
+        if (curBlock.find('.cabinet-block-row:hidden').length == 0) {
+            curBlock.addClass('max');
+        }
         e.preventDefault();
     });
 
     $('.cabinet-block-hide').click(function(e) {
-        $(this).parents().filter('.cabinet-block').removeClass('open');
+        var curBlock = $(this).parents().filter('.cabinet-block');
+        var count = curBlock.find('.cabinet-block-row:visible').length;
+        count -= 3;
+        curBlock.find('.cabinet-block-row:gt(' + (count - 1) + ')').hide();
+        curBlock.removeClass('max');
+        if (count <= 3) {
+            curBlock.removeClass('open');
+        }
         e.preventDefault();
     });
 
     if (window.location.hash != '') {
         $('a[href="' + window.location.hash + '"]').click();
     }
+
+    $('.cabinet-profile-item-edit').click(function(e) {
+        $('.cabinet-profile-item-value.open').removeClass('open');
+        $(this).parents().filter('.cabinet-profile-item-value').addClass('open');
+        e.preventDefault();
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.cabinet-profile-item-value').length == 0) {
+            $('.cabinet-profile-item-value.open').removeClass('open');
+        }
+    });
+
+    $('.cabinet-block-row-item-9 a').click(function(e) {
+        $(this).parents().filter('.cabinet-block-row').toggleClass('detail-open');
+        e.preventDefault();
+    });
 
 });
 
@@ -286,6 +329,22 @@ function initForm(curForm) {
                 windowOpen($(form).attr('action'), $(form).serialize(), orderSelects);
             }
         });
+    } else if (curForm.hasClass('cabinet-form')) {
+        curForm.validate({
+            ignore: '',
+            submitHandler: function(form) {
+                var curValue = $(form).parents().filter('.cabinet-profile-item-value')
+                curValue.removeClass('open');
+                curValue.find('.cabinet-profile-item-value-text').html(curValue.find('.form-input input').val());
+                $.ajax({
+                    type: 'POST',
+                    url: $(form).attr('action'),
+                    dataType: 'html',
+                    data: $(form).serialize(),
+                    cache: false
+                });
+            }
+        });
     } else {
         if (!curForm.hasClass('novalidate')) {
             curForm.validate({
@@ -301,6 +360,9 @@ function orderSelects() {
     if (orderForm != null) {
         curProgramm = orderForm.find('input[name="programm"]').val();
         curDays = orderForm.find('input[name="days"]:checked').val();
+    }
+    if (orderProgramm != null) {
+        curProgramm = orderProgramm;
     }
     if (typeof (programms) != 'undefined') {
         var programmHTML = '<option value=""></option>';
