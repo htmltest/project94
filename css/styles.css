@@ -122,9 +122,12 @@ header.fixed nav ul li a:hover,
 .header-phone-title {opacity:.8; font-size:9px; line-height:12px}
 .header-phone-link {font-weight:bold; padding:2px 0 0 0}
 .header-phone-link a {color:#fff}
+.header-phone-link a:hover {color:#f0c490}
 
 header.fixed .header-phone,
 .wrapper-inner header .header-phone {padding-top:32px}
+header.fixed .header-phone-link a:hover,
+.wrapper-inner header .header-phone-link a:hover {color:#ffe2c1}
 
 @media screen and (max-width:1199px) {
     .header-phone {padding:65px 0 0 60px}
@@ -563,7 +566,7 @@ footer {padding:93px 0 94px 0}
 .window-content {position:relative; background:#fff; border-radius:6px}
 .window-close {display:block; position:absolute; width:27px; height:27px; right:15px; top:15px; z-index:99; background:url(../images/window-close.svg) no-repeat; background-size:100%}
 
-.window-order {width:570px; padding:53px 110px 28px 110px}
+.window-order {width:570px; padding:53px 110px 66px 110px}
 .window-order-title {text-align:center; font-weight:300; font-size:45px; line-height:50px; color:#373737; padding:0 0 11px 0}
 .window-order-title a {color:#ee9833; text-decoration:none; background:url(../images/dots.png) repeat-x left bottom; margin:0 22px}
 .window-order-title a:hover {color:#e7b782; background:none}
@@ -601,7 +604,7 @@ footer {padding:93px 0 94px 0}
 .form-notice a {color:#ee9833}
 .form-notice a:hover {color:#e7b782}
 
-.form-error {text-align:center; color:#e62c2c; font-weight:300; padding:31px 0 38px 0}
+.form-error {text-align:center; color:#e62c2c; font-weight:300; padding:31px 0 0 0}
 .form-error:before {content:""; display:inline-block; vertical-align:middle; width:42px; height:38px; background:url(../images/form-error.png); margin:-2px 15px 0 0}
 
 .window-forgot-link {font-size:14px; font-weight:bold; text-transform:uppercase}
