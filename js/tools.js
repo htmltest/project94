@@ -474,3 +474,11 @@ function windowClose() {
         $('.wrapper-inner').css({'top': 'auto'});
     }
 }
+
+$(window).on('load resize', function() {
+    if ($('.cabinet').length > 0) {
+        if ($(window).height() - $('.wrapper').height() > 0) {
+            $('.cabinet').css({'min-height': $(window).height() - $('footer').outerHeight()});
+        }
+    }
+});

@@ -240,6 +240,7 @@ header.fixed .header-cart:hover,
 .slick-current .reviews-slider-item-photo img {position:static; left:auto; right:auto; top:auto; opacity:1}
 .slick-current+.slick-slide .reviews-slider-item-photo img {left:-160px; right:auto}
 .reviews-slider-item-content {display:table-cell; vertical-align:middle; padding:0 0 0 45px}
+.reviews-slider-item-content-empty {padding:0; text-align:center}
 .reviews-slider-item-name {text-transform:uppercase; font-weight:bold; font-size:16px; line-height:22px; letter-spacing:0; color:#000}
 .reviews-slider-item-info {font-weight:300; font-size:14px; line-height:19px; letter-spacing:0; color:#6f6f6f; padding:20px 0 0 0}
 .reviews-slider-item-text {font-weight:300; font-size:16px; line-height:26px; letter-spacing:0; color:#000; padding:25px 0 0 0}
@@ -665,6 +666,7 @@ footer {padding:93px 0 94px 0}
 .cabinet-profile-inner {margin:0 0 0 -80px}
 .cabinet-profile-inner:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 .cabinet-profile-item {float:left; white-space:nowrap; margin:0 0 0 80px; color:#000; padding:15px 0}
+.cabinet-profile-item-address {clear:left}
 .cabinet-profile-item-title {font-weight:300}
 .cabinet-profile-item-value {font-weight:bold; font-size:14px; text-transform:uppercase; padding:1px 0 0 0; position:relative}
 .cabinet-profile-item-edit {display:inline-block; vertical-align:top; width:19px; height:19px; background:url(../images/cabinet-profile-item-edit.png); margin:0 0 0 4px}
