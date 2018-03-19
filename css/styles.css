@@ -334,7 +334,7 @@ header.fixed .header-cart:hover,
 
 .menu-types {margin:0 -15px; padding:72px 0 0 0}
 .menu-types:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.menu-type {float:left; width:25%; padding:0 15px; box-sizing:border-box}
+.menu-type {float:left; width:25%; padding:0 15px 56px 15px; box-sizing:border-box}
 .menu-type-inner {width:255px; margin:0 auto; position:relative; border-radius:3px; background:#ee9833; text-align:center}
 .menu-type-inner:hover {background:#f4a64b}
 .menu-type.active .menu-type-inner {background:#fff; border-radius:3px 3px 0 0}
@@ -407,7 +407,7 @@ header.fixed .header-cart:hover,
     .menu-days-mobile-select-list ul li.active {background:#f0f0f0}
 }
 
-.menu-days {text-align:center; font-weight:300; font-size:14px; line-height:20px; letter-spacing:1px; text-transform:uppercase; padding:77px 0 0 0}
+.menu-days {text-align:center; font-weight:300; font-size:14px; line-height:20px; letter-spacing:1px; text-transform:uppercase; padding:21px 0 0 0}
 .menu-days ul {display:inline-block; vertical-align:top; margin:0; padding:0; list-style:none}
 .menu-days ul li {float:left; margin:0 0 0 12px; padding:0 5px 2px 5px}
 .menu-days ul li:first-child {margin:0}
