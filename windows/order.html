@@ -126,16 +126,19 @@
             </div>
             <div class="col-half">
                 <div class="form-label">Сколько дней вы хотите питаться</div>
-                <div class="form-select">
-                    <select name="days" data-placeholder=" " id="daysSelect">
-                    </select>
+                <div class="form-select-add">
+                    <div class="form-select">
+                        <select name="days" data-placeholder=" " id="daysSelect">
+                        </select>
+                    </div>
+                    <div class="form-select-add-error"><span>Выберите программу</span></div>
                 </div>
             </div>
         </div>
         <div class="cols">
             <div class="col-half">
                 <div class="form-label">С какого дня начать </div>
-                <div class="form-input form-input-date"><input type="text" name="date" value="" /></div>
+                <div class="form-input form-input-date"><input type="text" name="date" value="" class="required" /><div class="form-input-date-calendar"></div></div>
             </div>
             <div class="col-half">
                 <div class="form-label">Способ оплаты</div>
@@ -157,6 +160,8 @@
         </div>
         <div class="form-label">Куда доставить заказ</div>
         <div class="form-input"><textarea name="address" rows="3" cols="10"></textarea></div>
+
+        <div class="form-captcha"><div class="g-recaptcha"></div></div>
 
         <div class="form-submit"><input type="submit" value="оформить заказ" /></div>
 

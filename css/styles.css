@@ -16,6 +16,8 @@ form {margin:0; padding:0}
 .form-label {font-weight:300; color:#000; padding:23px 0 3px 0}
 .form-input {position:relative}
 .form-input-date:before {content:""; display:block; position:absolute; right:13px; top:16px; width:17px; height:18px; background:url(../images/form-input-date.svg)}
+.form-input-date-calendar {position:absolute; left:0; top:100%; visibility:hidden; z-index:99999}
+.form-input-date-calendar.visible {visibility:visible}
 
 .form-input input,
 .form-input textarea {position:relative; border:1px solid #c1c1c1; font:bold 14px/20px Roboto, sans-serif; text-transform:uppercase; color:#000; vertical-align:top; margin:0; padding:13px 24px 15px 24px; width:100%; height:50px; box-sizing:border-box; outline:none; border-radius:3px; background:url(../images/blank.gif); -webkit-appearance:none}
@@ -28,6 +30,18 @@ label.error {display:block; color:#e62c2c; font-size:11px; line-height:14px; fon
 ::-ms-clear {display:none}
 
 .form-select select {position:relative; border:1px solid #c1c1c1; font:bold 14px/20px Roboto, sans-serif; text-transform:uppercase; color:#000; vertical-align:top; margin:0; padding:13px 24px 15px 24px; width:100%; height:50px; box-sizing:border-box; outline:none; border-radius:3px; background:url(../images/blank.gif); -webkit-appearance:none}
+
+.form-select-add {position:relative}
+.form-select-add-error {position:absolute; left:0; top:0; right:0; bottom:0; background:url(../images/blank.gif)}
+.form-select-add-error.hidden {display:none}
+.form-select-add-error span {display:none; font-size:14px; line-height:50px; padding:0 0 0 24px; color:#e62c2c}
+.form-select-add-error.visible span {display:block}
+
+.form-captcha {padding:23px 0 0 0}
+.g-recaptcha > div {margin:0 auto}
+@media screen and (max-width:767px) {
+    .g-recaptcha > div {transform:scale(0.75); margin:0; transform-origin:left center}
+}
 
 .wrapper {min-width:320px; width:100%; position:relative; overflow:hidden}
 .wrapper-inner {padding:100px 0 0 0}

@@ -286,6 +286,16 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('body').on('click', '.form-select-add-error', function() {
+        $(this).addClass('visible');
+    });
+
+    window.setInterval(function() {
+        if ($('#programmSelect').length > 0 && $('#programmSelect').val() != '') {
+            $('.form-select-add-error').addClass('hidden');
+        }
+    }, 100);
+
 });
 
 $(window).on('resize', function() {
@@ -297,10 +307,43 @@ function initForm(curForm) {
     curForm.find('input.maskPhone').mask('+7 (999) 999-99-99');
 
     var dateFormat = 'dd.mm.yy';
-    curForm.find('.form-input-date input').datepicker({
-        dateFormat: dateFormat,
-        minDate: 0
-    });
+    curForm.find('.form-input-date input').attr('autocomplete', 'off');
+    curForm.find('.form-input-date input').mask('99.99.9999');
+
+    curForm.find('.form-input-date').each(function() {
+		var curField = $(this);
+		var curInput = curField.find('input');
+		var curCalendar = curField.find('.form-input-date-calendar');
+		curInput.on('focus', function() {
+			curCalendar.addClass('visible');
+		});
+		curCalendar.datepicker({
+        	dateFormat: dateFormat,
+        	minDate: '+1d',
+			onSelect: function(dateText, inst) {
+				curInput.val(dateText);
+                curCalendar.removeClass('visible');
+			}
+    	});
+		$(document).click(function(e) {
+            if ($(e.target).parents().filter('.form-input-date').length == 0 && $(e.target).parents().filter('.ui-datepicker-header').length == 0) {
+                curCalendar.removeClass('visible');
+            }
+		});
+		curInput.on('change', function() {
+        	var curValue = $(this).val();
+        	if (curValue.match(/^[0-9]{2}\.[0-9]{2}\.[0-9]{4}$/)) {
+				curCalendar.datepicker('setDate', curValue);
+            }
+	    });
+
+    	curInput.on('keyup', function() {
+        	var curValue = $(this).val();
+        	if (curValue.match(/^[0-9]{2}\.[0-9]{2}\.[0-9]{4}$/)) {
+            	curCalendar.datepicker('setDate', curValue);
+	        }
+    	});
+	});
 
     $('.window #programmSelect').change(function() {
         var curValue = $(this).val();
@@ -438,6 +481,12 @@ function windowOpen(linkWindow, dataWindow, callbackWindow) {
 
         if (typeof (callbackWindow) != 'undefined') {
             callbackWindow.call();
+        }
+
+        if ($('.window .g-recaptcha').length > 0) {
+            grecaptcha.render($('.window .g-recaptcha')[0], {
+                'sitekey' : '6Ldk5DMUAAAAALWRTOM96EQI_0OApr59RQHoMirA'
+            });
         }
 
         $(window).resize(function() {
